@@ -63,6 +63,7 @@ class Lcd:
 	displaycontrol=0
 	displaymode=0
 	backlightval =0 
+	displayshift=0
 	
 	def __init__(self):
 		self.lcd = I2c_device(0x27,1)
@@ -140,7 +141,10 @@ class Lcd:
 		self.expanderWrite(_data & ~self.En)
 		time.sleep(0.000050)		
 
-
+	def display_shift(self):
+		self.displayshift = self.LCD_DISPLAYMOVE | self.LCD_MOVELEFT
+		self.command(self.LCD_CURSORSHIFT | self.displayshift)
+	
 	def home(self):
 		self.command(self.LCD_RETURNHOME)
 		time.sleep(0.5)

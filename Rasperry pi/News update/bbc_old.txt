@@ -810,7 +810,7 @@
       <media:thumbnail width="144" height="81" url="http://news.bbcimg.co.uk/media/images/76473000/jpg/_76473359_76460940.jpg"/> 
     </item>  
     <item> 
-      <title>Which sport are you made for? Take our test</title>  
+      <title>Which sport are you made for? Take our 60-second test</title>  
       <description>See which Commonwealth Games events match your abilities</description>  
       <link>http://www.bbc.co.uk/news/uk-28062001#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa</link>  
       <guid isPermaLink="false">http://www.bbc.co.uk/news/uk-28062001</guid>  
