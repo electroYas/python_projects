@@ -1,3 +1,9 @@
+#Website monitor
+#transmission software torrent list,speeds and progress monitor
+#i2c lcd display 16x2 used for monitoring
+#Working fine but still testing for bugs 
+#version 1.0 
+
 import webkit
 import gtk
 import i2c_lcd
