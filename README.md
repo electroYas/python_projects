@@ -1,4 +1,4 @@
 python_projects
 ===============
 
-python codes for raspberry pi
+python codes for raspberry pi.
