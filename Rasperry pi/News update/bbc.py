@@ -13,7 +13,12 @@ import RPi.GPIO as GPIO
 
 local_path="./bbc_old.txt"
 temp_path="/dev/shm/bbc_old.txt"
-remote_path="http://feeds.bbci.co.uk/news/world/asia/rss.xml"
+remote_path_list=[
+"http://feeds.bbci.co.uk/news/world/asia/rss.xml",
+"http://feeds.bbci.co.uk/news/technology/rss.xml",
+"http://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+"http://feeds.bbci.co.uk/news/world/rss.xml"
+]
 led_array = [4,17,18,22]	#[online status,searching status,display status,none]
 
 def gpioSetup(leds):
@@ -86,14 +91,17 @@ def main():
 	lcd.backlight()	
 	lcd_intro()
 	gpioSetup(led_array)
-	
+	text=""
 	while 1:	
 		f_size=os.path.getsize(local_path)
 		try:
 			print("Getting news from remote server")
-			text = urllib.urlopen(remote_path).read()
-			GPIO.output(led_array[0],1)
+			for remote_path in remote_path_list:
+				print("getting infomation from : "+ remote_path)
+				text = text + urllib.urlopen(remote_path).read()
 			print("done.")
+			GPIO.output(led_array[0],1)
+				
 			f2_size = file_write(temp_path,text)
 			
 			if f_size == f2_size:
