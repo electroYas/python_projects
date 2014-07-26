@@ -38,13 +38,15 @@ def file_write(path, text):
 	f.close()
 	return os.path.getsize(path)
 
-def display_news(headline_list, date_display):
+def display_news(headline_list, date_list):
 	lcd.home()	
 	lcd.lcd_putc('*')
 	col=1
+	index=0
 	for header in headline_list:	
-		print(header)
-		lcd.lcd_puts(date_display,0,1)	
+		print(header + " - " + str(date_list[index]))
+		lcd.lcd_puts(date_list[index],0,1)	
+		index=index+1
 		lcd.setCursor(1,0)
 		for ch in header:
 			GPIO.output(led_array[2],1)
@@ -109,10 +111,11 @@ def main():
 			
 	
 		strings = text.split('<')	
-		index=0
+		index=-1
 		headline_list=[]
+		date_list=[]
 		headline_pattern=r'title>(.*)$'
-		date_pattern="lastBuildDate>(.*)$"
+		date_pattern="pubDate>(.*)$"
 		for string in strings:
 			GPIO.output(led_array[1],1)
 			headline = re.search(headline_pattern,string)
@@ -122,13 +125,15 @@ def main():
 			if headline :	
 				temp = headline.group(1)
 				if ("profile" not in temp and "VIDEO:" not in temp and "BBC News" not in temp) :
-					headline_list.insert(index,temp)
 					index=index+1
+					headline_list.insert(index,temp)
+					date_list.insert(index,0)
+					
 			elif date_news:
-				date_display = date_news.group(1)	
+				date_list.insert(index,date_news.group(1))
 				
 			
-		display_news(headline_list,date_display)		
+		display_news(headline_list,date_list)		
 		
 		print("reloading....")
 
