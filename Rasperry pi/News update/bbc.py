@@ -71,12 +71,14 @@ def display_news(headline_list, date_list):
 				col=0
 				time.sleep(1)
 				lcd.clear()
+				lcd.home()
 				continue
 				
 			if col>=39:
 				col=0
 				time.sleep(1)
 				lcd.clear()
+				lcd.home()
 				continue
 			
 			col =col +1
