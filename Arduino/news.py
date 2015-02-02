@@ -1,6 +1,6 @@
 #!/bin/python2
 
-#News feed monitor LCD 16x2 with I2C module
+#News feed monitor LCD 16x2 with Arduino
 #save in local file for offline
 #update if file size changes
 
