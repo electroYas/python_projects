@@ -37,6 +37,7 @@ void loop()
      } 
     
      if(col>15 && row==1){
+       delay(500);
        lcd.clear();
        lcd.setCursor(0,0);
        row=0;
