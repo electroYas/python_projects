@@ -25,7 +25,11 @@ void loop()
    lcd.clear();
    lcd.setCursor(0,0);
    for(int i=0;i<inputString.length();i++){
-     if(inputString[i]=='\n') continue;
+     if(inputString[i]=='\n'){
+       col=0;
+       row=0;
+       break;
+     }
      lcd.print(inputString[i]);
      col++;
      delay(80);
